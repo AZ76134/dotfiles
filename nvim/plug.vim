@@ -20,7 +20,7 @@ Plug 'vim-test/vim-test'
 
 if has("nvim")
   Plug 'hoob3rt/lualine.nvim'
-  Plug 'nvim-lua/completion-nvim'
+  " Plug 'nvim-lua/completion-nvim'
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'nvim-lua/popup.nvim'
@@ -38,6 +38,12 @@ if has("nvim")
   Plug 'ellisonleao/gruvbox.nvim' 
   Plug 'jghauser/mkdir.nvim'
   Plug 'max397574/better-escape.nvim'
+
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'williamboman/nvim-lsp-installer'
+  Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+
+  Plug 'abecodes/tabout.nvim'
 
 endif
 
