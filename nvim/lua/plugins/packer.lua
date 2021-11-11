@@ -47,12 +47,17 @@ return packer.startup(function()
   use "max397574/better-escape.nvim"
 
   -- telescope
-  use {
-    'nvim-telescope/telescope.nvim',
-    requires = { {'nvim-lua/plenary.nvim'} }
-  }
+  use { 'nvim-telescope/telescope.nvim', requires = {'nvim-lua/plenary.nvim'}}
   -- comment
   use 'numToStr/Comment.nvim'
-
+  -- gitsign
+  use { 'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'}}
+  use { 'yamatsum/nvim-nonicons', requires = {'kyazdani42/nvim-web-devicons'}}
+  -- status line
+  use {
+    'glepnir/galaxyline.nvim',
+      branch = 'main',
+      requires = {'kyazdani42/nvim-web-devicons', opt = true}
+  }
 end)
 

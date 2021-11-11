@@ -56,8 +56,8 @@ opt.synmaxcol = 240       -- max column for syntax highlight
 -- Colorscheme
 -----------------------------------------------------------
 opt.termguicolors = true      -- enable 24-bit RGB colors
-opt.background = 'dark'           -- background
-vim.cmd([[colorscheme gruvbox]])
+-- opt.background = 'dark'           -- background
+-- vim.cmd([[colorscheme gruvbox]])
 
 -----------------------------------------------------------
 -- Tabs, indent
