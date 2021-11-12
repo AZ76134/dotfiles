@@ -546,48 +546,49 @@ M.self_color_gruvbox_dark = function()
   vim.g.gruvbox_italic = 1
   vim.g.gruvbox_sign_column = 'bg0'
 
-  cmd[[set background=dark]]
-  cmd[[colorscheme gruvbox]]
+  cmd [[
+  colorscheme gruvbox
 
-  cmd[[au VimEnter * highlight StatusLine                                                                                                guifg=#3c3836]]
+  au VimEnter * highlight StatusLine                                                                                                guifg=#3c3836
 
-  cmd[[au VimEnter * highlight GalaxyLeftGitDiffAddActive                                                                  guibg=#3c3836 guifg=#27b31a]]
-  cmd[[au VimEnter * highlight GalaxyLeftGitDiffInactive                                                                   guibg=#3c3836 guifg=#ebdbb2]]
-  cmd[[au VimEnter * highlight GalaxyLeftGitDiffModifiedActive                                                             guibg=#3c3836 guifg=#fe811b]]
-  cmd[[au VimEnter * highlight GalaxyLeftGitDiffRemoveActive                                                               guibg=#3c3836 guifg=#fb4632]]
-  cmd[[au VimEnter * highlight GalaxyLeftLspInactive                                                                       guibg=#3c3836 guifg=#d5c4a1]]
-  cmd[[au VimEnter * highlight GalaxyMapperCommon1                                                                         guibg=#3c3836 guifg=#504945]]
-  cmd[[au VimEnter * highlight GalaxyMapperCommon2                                                                         guibg=#bdae93 guifg=#504945]]
-  cmd[[au VimEnter * highlight GalaxyMapperCommon3                                                                         guibg=#3c3836 guifg=#ebdbb2]]
-  cmd[[au VimEnter * highlight GalaxyMapperCommon4                                                                         guibg=#504945 guifg=#ebdbb2]]
-  cmd[[au VimEnter * highlight GalaxyMapperCommon5                                                                         guibg=#3c3836 guifg=#d5c4a1]]
-  cmd[[au VimEnter * highlight GalaxyMapperCommon6                                                                         guibg=#504945 guifg=#d5c4a1]]
-  cmd[[au VimEnter * highlight GalaxyMapperCommon7                                                                         guibg=#504945 guifg=#bdae93]]
-  cmd[[au VimEnter * highlight GalaxyMapperCommon8                                                                         guibg=#504945 guifg=#91a6ba]]
-  cmd[[au VimEnter * highlight GalaxyMidFileStatusModified                                                                 guibg=#3c3836 guifg=#8ec07c]]
-  cmd[[au VimEnter * highlight GalaxyMidFileStatusReadonly                                                                 guibg=#3c3836 guifg=#fe811b]]
-  cmd[[au VimEnter * highlight GalaxyMidFileStatusRestricted                                                               guibg=#3c3836 guifg=#fb4632]]
-  cmd[[au VimEnter * highlight GalaxyMidFileStatusUnmodified                                                               guibg=#3c3836 guifg=#d5c4a1]]
-  cmd[[au VimEnter * highlight GalaxyRightLspErrorActive                                                                   guibg=#3c3836 guifg=#fb4632]]
-  cmd[[au VimEnter * highlight GalaxyRightLspHintActive                                                                    guibg=#3c3836 guifg=#27b31a]]
-  cmd[[au VimEnter * highlight GalaxyRightLspInformationActive                                                             guibg=#3c3836 guifg=#127fff]]
-  cmd[[au VimEnter * highlight GalaxyRightLspWarningActive                                                                 guibg=#3c3836 guifg=#fe811b]]
-  cmd[[au VimEnter * highlight GalaxyViModeCommandInverted                                                                 guibg=#504945 guifg=#fabd2f]]
-  cmd[[au VimEnter * highlight GalaxyViModeCommandUnturned                                                                 guibg=#fabd2f guifg=#3c3836]]
-  cmd[[au VimEnter * highlight GalaxyViModeCommonVisualInverted                                                            guibg=#504945 guifg=#fe811b]]
-  cmd[[au VimEnter * highlight GalaxyViModeCommonVisualUnturned                                                            guibg=#fe811b guifg=#3c3836]]
-  cmd[[au VimEnter * highlight GalaxyViModeEmptyInverted                                                                   guibg=#504945 guifg=#bdae93]]
-  cmd[[au VimEnter * highlight GalaxyViModeEmptyUnturned                                                                   guibg=#bdae93 guifg=#3c3836]]
-  cmd[[au VimEnter * highlight GalaxyViModeInsertInverted                                                                  guibg=#504945 guifg=#83a598]]
-  cmd[[au VimEnter * highlight GalaxyViModeInsertUnturned                                                                  guibg=#83a598 guifg=#3c3836]]
-  cmd[[au VimEnter * highlight GalaxyViModeNormalInverted                                                                  guibg=#504945 guifg=#bdae93]]
-  cmd[[au VimEnter * highlight GalaxyViModeNormalUnturned                                                                  guibg=#bdae93 guifg=#3c3836]]
-  cmd[[au VimEnter * highlight GalaxyViModeReplaceInverted                                                                 guibg=#504945 guifg=#8ec07c]]
-  cmd[[au VimEnter * highlight GalaxyViModeReplaceUnturned                                                                 guibg=#8ec07c guifg=#3c3836]]
-  cmd[[au VimEnter * highlight GalaxyViModeShellInverted                                                                   guibg=#504945 guifg=#d3869b]]
-  cmd[[au VimEnter * highlight GalaxyViModeShellUnturned                                                                   guibg=#d3869b guifg=#3c3836]]
-  cmd[[au VimEnter * highlight GalaxyViModeTerminalInverted                                                                guibg=#504945 guifg=#d3869b]]
-  cmd[[au VimEnter * highlight GalaxyViModeTerminalUnturned                                                                guibg=#d3869b guifg=#3c3836]]
+  au VimEnter * highlight GalaxyLeftGitDiffAddActive                                                                  guibg=#3c3836 guifg=#27b31a
+  au VimEnter * highlight GalaxyLeftGitDiffInactive                                                                   guibg=#3c3836 guifg=#ebdbb2
+  au VimEnter * highlight GalaxyLeftGitDiffModifiedActive                                                             guibg=#3c3836 guifg=#fe811b
+  au VimEnter * highlight GalaxyLeftGitDiffRemoveActive                                                               guibg=#3c3836 guifg=#fb4632
+  au VimEnter * highlight GalaxyLeftLspInactive                                                                       guibg=#3c3836 guifg=#d5c4a1
+  au VimEnter * highlight GalaxyMapperCommon1                                                                         guibg=#3c3836 guifg=#504945
+  au VimEnter * highlight GalaxyMapperCommon2                                                                         guibg=#bdae93 guifg=#504945
+  au VimEnter * highlight GalaxyMapperCommon3                                                                         guibg=#3c3836 guifg=#ebdbb2
+  au VimEnter * highlight GalaxyMapperCommon4                                                                         guibg=#504945 guifg=#ebdbb2
+  au VimEnter * highlight GalaxyMapperCommon5                                                                         guibg=#3c3836 guifg=#d5c4a1
+  au VimEnter * highlight GalaxyMapperCommon6                                                                         guibg=#504945 guifg=#d5c4a1
+  au VimEnter * highlight GalaxyMapperCommon7                                                                         guibg=#504945 guifg=#bdae93
+  au VimEnter * highlight GalaxyMapperCommon8                                                                         guibg=#504945 guifg=#91a6ba
+  au VimEnter * highlight GalaxyMidFileStatusModified                                                                 guibg=#3c3836 guifg=#8ec07c
+  au VimEnter * highlight GalaxyMidFileStatusReadonly                                                                 guibg=#3c3836 guifg=#fe811b
+  au VimEnter * highlight GalaxyMidFileStatusRestricted                                                               guibg=#3c3836 guifg=#fb4632
+  au VimEnter * highlight GalaxyMidFileStatusUnmodified                                                               guibg=#3c3836 guifg=#d5c4a1
+  au VimEnter * highlight GalaxyRightLspErrorActive                                                                   guibg=#3c3836 guifg=#fb4632
+  au VimEnter * highlight GalaxyRightLspHintActive                                                                    guibg=#3c3836 guifg=#27b31a
+  au VimEnter * highlight GalaxyRightLspInformationActive                                                             guibg=#3c3836 guifg=#127fff
+  au VimEnter * highlight GalaxyRightLspWarningActive                                                                 guibg=#3c3836 guifg=#fe811b
+  au VimEnter * highlight GalaxyViModeCommandInverted                                                                 guibg=#504945 guifg=#fabd2f
+  au VimEnter * highlight GalaxyViModeCommandUnturned                                                                 guibg=#fabd2f guifg=#3c3836
+  au VimEnter * highlight GalaxyViModeCommonVisualInverted                                                            guibg=#504945 guifg=#fe811b
+  au VimEnter * highlight GalaxyViModeCommonVisualUnturned                                                            guibg=#fe811b guifg=#3c3836
+  au VimEnter * highlight GalaxyViModeEmptyInverted                                                                   guibg=#504945 guifg=#bdae93
+  au VimEnter * highlight GalaxyViModeEmptyUnturned                                                                   guibg=#bdae93 guifg=#3c3836
+  au VimEnter * highlight GalaxyViModeInsertInverted                                                                  guibg=#504945 guifg=#83a598
+  au VimEnter * highlight GalaxyViModeInsertUnturned                                                                  guibg=#83a598 guifg=#3c3836
+  au VimEnter * highlight GalaxyViModeNormalInverted                                                                  guibg=#504945 guifg=#bdae93
+  au VimEnter * highlight GalaxyViModeNormalUnturned                                                                  guibg=#bdae93 guifg=#3c3836
+  au VimEnter * highlight GalaxyViModeReplaceInverted                                                                 guibg=#504945 guifg=#8ec07c
+  au VimEnter * highlight GalaxyViModeReplaceUnturned                                                                 guibg=#8ec07c guifg=#3c3836
+  au VimEnter * highlight GalaxyViModeShellInverted                                                                   guibg=#504945 guifg=#d3869b
+  au VimEnter * highlight GalaxyViModeShellUnturned                                                                   guibg=#d3869b guifg=#3c3836
+  au VimEnter * highlight GalaxyViModeTerminalInverted                                                                guibg=#504945 guifg=#d3869b
+  au VimEnter * highlight GalaxyViModeTerminalUnturned                                                                guibg=#d3869b guifg=#3c3836
+  ]]
 end
 
 return M
