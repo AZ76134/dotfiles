@@ -4,27 +4,27 @@ local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 
 if fn.empty(fn.glob(install_path)) > 0 then
-	cmd('!git clone https://github.com/wbthomason/packer.nvim '..install_path)
-	cmd('packadd packer.nvim')
+  cmd('!git clone https://github.com/wbthomason/packer.nvim '..install_path)
+  cmd('packadd packer.nvim')
 end
 
 local packer = require 'packer'
 
 return packer.startup(function()
-	use 'wbthomason/packer.nvim' -- packer can manage itself
-	-- autocomplete
-	use {
-		'hrsh7th/nvim-cmp',
-		requires = {
-			'L3MON4D3/LuaSnip',
-			'hrsh7th/cmp-nvim-lsp',
-			'hrsh7th/cmp-path',
-			'hrsh7th/cmp-buffer',
-			'saadparwaiz1/cmp_luasnip',
-		},
-	}
+  use 'wbthomason/packer.nvim' -- packer can manage itself
+  -- autocomplete
+  use {
+    'hrsh7th/nvim-cmp',
+    requires = {
+      'L3MON4D3/LuaSnip',
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-buffer',
+      'saadparwaiz1/cmp_luasnip',
+    },
+  }
   -- explorer
-	use {'ms-jpq/chadtree', branch='chad', run='python3 -m chadtree deps' }
+  use {'ms-jpq/chadtree', branch='chad', run='python3 -m chadtree deps' }
 
   -- LSP
   use 'neovim/nvim-lspconfig'
@@ -59,5 +59,8 @@ return packer.startup(function()
       branch = 'main',
       requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
+  -- toggle term
+  use {"akinsho/toggleterm.nvim"}
+
 end)
 
