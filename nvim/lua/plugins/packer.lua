@@ -70,5 +70,9 @@ return packer.startup(function()
 
   -- startup
   use 'henriquehbr/nvim-startup.lua'
+
+  -- faster filetype loading
+  use "nathom/filetype.nvim"
+
 end)
 
