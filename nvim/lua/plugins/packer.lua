@@ -74,11 +74,9 @@ return packer.startup(function()
   -- faster filetype loading
   use 'nathom/filetype.nvim'
 
-  use
-  {
-    'glepnir/dashboard-nvim',
-    config = function() vim.g.dashboard_default_executive='telescope' end
-  }
-
+  -- dashboard
+  use 'glepnir/dashboard-nvim'
+  -- better quick fix
+  use 'kevinhwang91/nvim-bqf'
 end)
 
