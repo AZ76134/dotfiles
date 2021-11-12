@@ -72,7 +72,13 @@ return packer.startup(function()
   use 'henriquehbr/nvim-startup.lua'
 
   -- faster filetype loading
-  use "nathom/filetype.nvim"
+  use 'nathom/filetype.nvim'
+
+  use
+  {
+    'glepnir/dashboard-nvim',
+    config = function() vim.g.dashboard_default_executive='telescope' end
+  }
 
 end)
 

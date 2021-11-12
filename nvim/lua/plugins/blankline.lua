@@ -16,7 +16,8 @@ blankline.setup {
     'markdown',
     'text',
     'terminal',
-    'packer'
+    'packer',
+    'dashboard'
   },
   buftype_exclude = {
     'terminal',
