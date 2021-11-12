@@ -9,9 +9,15 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 local packer = require 'packer'
+packer.init({
+  compile_path = vim.fn.stdpath('config')..'/lua/packer_compiled.lua'
+})
 
 return packer.startup(function()
   use 'wbthomason/packer.nvim' -- packer can manage itself
+  -- startup cache
+  use 'lewis6991/impatient.nvim'
+
   -- autocomplete
   use {
     'hrsh7th/nvim-cmp',

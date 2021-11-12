@@ -1,4 +1,5 @@
 require('plugins/packer')
+require('impatient').enable_profile()
 require('keymaps')
 require('settings')
 require('plugins/cmp')
