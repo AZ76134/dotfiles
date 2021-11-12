@@ -62,5 +62,7 @@ return packer.startup(function()
   -- toggle term
   use {"akinsho/toggleterm.nvim"}
 
+  -- startup
+  use 'henriquehbr/nvim-startup.lua'
 end)
 
