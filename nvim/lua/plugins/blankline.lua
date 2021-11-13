@@ -1,7 +1,3 @@
---vim.opt.list = true
---vim.opt.listchars:append("space:?")
---vim.opt.listchars:append("eol:?")
-
 local ok, blankline = pcall(require, "indent_blankline")
 if (not ok) then return end
 blankline.setup {
