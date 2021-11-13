@@ -1,10 +1,12 @@
+local ok, bqf = pcall(require, "bqf")
+if (not ok) then return end
 
 vim.cmd([[
     hi BqfPreviewBorder guifg=#50a14f ctermfg=71
     hi link BqfPreviewRange Search
 ]])
 
-require('bqf').setup({
+bqf.setup({
     auto_enable = true,
     preview = {
         win_height = 12,

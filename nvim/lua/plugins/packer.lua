@@ -78,5 +78,7 @@ return packer.startup(function()
   use 'glepnir/dashboard-nvim'
   -- better quick fix
   use 'kevinhwang91/nvim-bqf'
+  -- bufferline
+  use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
 end)
 
