@@ -52,6 +52,7 @@ remap('v', '>', '>gv', { noremap = true, silent = true})
 remap('n', '<Leader>ff', ':Telescope find_files<CR>', { noremap = true, silent = true})
 remap('n', '<Leader>fr', ':Telescope live_grep<CR>', { noremap = true, silent = true})
 remap('n', '<Leader>fb', ':Telescope buffers<CR>', { noremap = true, silent = true})
+remap('n', '<Leader>fs', ':Telescope session-lens search_session<CR>', { noremap = true, silent = true})
 
 -- buffer line
 remap('n', ']b', ':BufferLineCycleNext<CR>', { noremap = true, silent = true})

@@ -80,5 +80,11 @@ return packer.startup(function()
   use 'kevinhwang91/nvim-bqf'
   -- bufferline
   use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
+  -- session management
+  use 'rmagatti/auto-session'
+  use {
+    'rmagatti/session-lens',
+    requires = {'rmagatti/auto-session', 'nvim-telescope/telescope.nvim'},
+  }
 end)
 
