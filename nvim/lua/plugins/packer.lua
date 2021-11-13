@@ -29,6 +29,10 @@ return packer.startup(function()
       'saadparwaiz1/cmp_luasnip',
     },
   }
+  -- vsnip
+  use 'hrsh7th/vim-vsnip'
+  use 'hrsh7th/vim-vsnip-integ'
+
   -- explorer
   use {'ms-jpq/chadtree', branch='chad', run='python3 -m chadtree deps' }
 
@@ -86,5 +90,7 @@ return packer.startup(function()
     'rmagatti/session-lens',
     requires = {'rmagatti/auto-session', 'nvim-telescope/telescope.nvim'},
   }
+  -- tabout
+  use 'abecodes/tabout.nvim'
 end)
 
