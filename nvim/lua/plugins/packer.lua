@@ -53,6 +53,8 @@ return packer.startup(function()
   use {"ellisonleao/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
   -- treesitter
   use 'nvim-treesitter/nvim-treesitter'
+  use 'p00f/nvim-ts-rainbow'
+  use 'romgrk/nvim-treesitter-context'
   -- better escape
   use "max397574/better-escape.nvim"
 
