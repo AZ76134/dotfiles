@@ -55,6 +55,7 @@ local Terminal  = require('toggleterm.terminal').Terminal
 local lazygit = Terminal:new({
   cmd = "lazygit",
   dir = "git_dir",
+  hidden = true,
   direction = "float",
   float_opts = {
     border = "double",
@@ -66,7 +67,7 @@ local lazygit = Terminal:new({
   end,
   -- function to run on closing the terminal
   on_close = function(term)
-    vim.cmd("Closing terminal")
+    -- vim.cmd("Closing terminal")
   end,
 })
 

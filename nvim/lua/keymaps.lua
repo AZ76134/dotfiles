@@ -44,10 +44,6 @@ remap('n', '<C-k>', '<C-w>k', { silent = true })
 remap('v', '<', '<gv', { noremap = true, silent = true})
 remap('v', '>', '>gv', { noremap = true, silent = true})
 
--- escape
---remap('i', 'jk', '<ESC>', { noremap = true, silent = true})
---remap('i', 'kj', '<ESC>', { noremap = true, silent = true})
-
 -- move line
 -- remap('x', 'J', ':move \'<+1<CR>gv-gv\'', { noremap = true, silent = true})
 -- remap('x', 'K', ':move \'<-2<CR>gv-gv\'', { noremap = true, silent = true})
