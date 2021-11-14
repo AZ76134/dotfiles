@@ -63,6 +63,14 @@ return packer.startup(function()
   use { 'junegunn/fzf', run = function() vim.fn['fzf#install']() end }
   use { 'nvim-telescope/telescope-symbols.nvim', require = {'nvim-telescope/nvim-telescope'} }
   use { 'cljoly/telescope-repo.nvim', require = {'nvim-telescope/nvim-telescope'} }
+  use {
+    'sudormrfbin/cheatsheet.nvim',
+    requires = {
+      {'nvim-telescope/telescope.nvim'},
+      {'nvim-lua/popup.nvim'},
+      {'nvim-lua/plenary.nvim'},
+    }
+  }
   -- comment
   use 'numToStr/Comment.nvim'
   -- gitsign

@@ -44,7 +44,8 @@ wk.register({
     s = {'<cmd>Telescope session-lens search_session<cr>', 'Find session'},
     m = {'<cmd>Telescope marks<cr>', 'Find marks'},
     p = {'<cmd>lua require\'telescope\'.extensions.repo.list{}<cr>', 'Find repo'},
-  }
+  },
+  ['<leader>f?'] = {'<cmd>Cheatsheet<cr>', 'Find cheatsheet'},
 })
 
 -- buffer line
