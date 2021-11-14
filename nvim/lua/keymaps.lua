@@ -47,8 +47,8 @@ remap('v', '<', '<gv', { noremap = true, silent = true})
 remap('v', '>', '>gv', { noremap = true, silent = true})
 
 -- tab
-remap("i", "<Tab>", "v:lua.tab_binding()", { expr = true})
-remap("i", "<S-Tab>", "v:lua.s_tab_binding()", { expr = true})
+-- remap("i", "<Tab>", "v:lua.tab_binding()", { expr = true})
+-- remap("i", "<S-Tab>", "v:lua.s_tab_binding()", { expr = true})
 
 -- move line
 -- remap('x', 'J', ':move \'<+1<CR>gv-gv\'', { noremap = true, silent = true})
@@ -76,4 +76,12 @@ remap('n', '<Leader>9', ':BufferLineGoToBuffer 9<CR>', { noremap = true, silent 
 remap('n', '<Leader>b', ':%bd|e#|bd#<CR>', { noremap = true, silent = true})
 
 -- toggleterm
-vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua lazygit_toggle()<CR>", {noremap = true, silent = true})
+remap("n", "<leader>g", "<cmd>lua lazygit_toggle()<CR>", {noremap = true, silent = true})
+
+-- lsp related
+remap("n", "<leader>xx", "<cmd>Trouble<cr>", {silent = true, noremap = true})
+remap("n", "<leader>xw", "<cmd>Trouble lsp_workspace_diagnostics<cr>", {silent = true, noremap = true})
+remap("n", "<leader>xd", "<cmd>Trouble lsp_document_diagnostics<cr>", {silent = true, noremap = true})
+remap("n", "<leader>xl", "<cmd>Trouble loclist<cr>", {silent = true, noremap = true})
+remap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", {silent = true, noremap = true})
+remap("n", "gR", "<cmd>Trouble lsp_references<cr>", {silent = true, noremap = true})

@@ -29,15 +29,15 @@ return packer.startup(function()
       'saadparwaiz1/cmp_luasnip',
     },
   }
-  -- vsnip
-  use 'hrsh7th/vim-vsnip'
-  use 'hrsh7th/vim-vsnip-integ'
 
   -- explorer
   use {'ms-jpq/chadtree', branch='chad', run='python3 -m chadtree deps' }
 
   -- LSP
   use 'neovim/nvim-lspconfig'
+  use 'onsails/lspkind-nvim'
+  use 'ray-x/lsp_signature.nvim'
+  use {'folke/trouble.nvim', requires = {'kyazdani42/nvim-web-devicons'}}
 
   -- indent line
   use 'lukas-reineke/indent-blankline.nvim'
@@ -60,6 +60,8 @@ return packer.startup(function()
 
   -- telescope
   use { 'nvim-telescope/telescope.nvim', requires = {'nvim-lua/plenary.nvim'}}
+  use { 'junegunn/fzf', run = function() vim.fn['fzf#install']() end }
+  use { 'nvim-telescope/telescope-symbols.nvim', require = {'nvim-telescope/nvim-telescope'} }
   -- comment
   use 'numToStr/Comment.nvim'
   -- gitsign

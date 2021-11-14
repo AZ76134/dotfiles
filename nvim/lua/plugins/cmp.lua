@@ -2,6 +2,8 @@ local ok, cmp = pcall(require, 'cmp')
 if (not ok) then return end
 
 local luasnip = require 'luasnip'
+local tabout = require 'tabout'
+local lspkind = require 'lspkind'
 
 cmp.setup {
   -- load snippet support
@@ -37,7 +39,8 @@ cmp.setup {
       elseif luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
       else
-        fallback()
+        tabout.tabout()
+        -- fallback()
       end
     end,
     ['<S-Tab>'] = function(fallback)
@@ -46,7 +49,8 @@ cmp.setup {
       elseif luasnip.jumpable(-1) then
         luasnip.jump(-1)
       else
-        fallback()
+        tabout.taboutBack()
+        -- fallback()
       end
     end
   },
@@ -54,8 +58,26 @@ cmp.setup {
   -- load sources, see: https://github.com/topics/nvim-cmp
   sources = {
     { name = 'nvim_lsp' },
+    { name = 'treesitter' },
     { name = 'luasnip' },
     { name = 'path' },
     { name = 'buffer' },
+  },
+  formatting = {
+    format = function(entry, vim_item)
+      vim_item.kind = string.format("%s %s", lspkind.presets.default[vim_item.kind], vim_item.kind)
+      vim_item.menu = ({
+        nvim_lsp = "'",
+        nvim_lua = "",
+        treesitter = "滑",
+        path = "",
+        buffer = "﬘",
+        zsh = "",
+        luasnip = "",
+        spell = "暈",
+      })[entry.source.name]
+
+      return vim_item
+    end,
   },
 }

@@ -15,7 +15,8 @@ require ('galaxyline').short_line_list = {
   'qf',
   'tabman',
   'tagbar',
-  'toggleterm'
+  'toggleterm',
+  'Trouble'
 }
 
 local vi_mode_mapping = {
@@ -495,7 +496,8 @@ require ('galaxyline').section.short_line_left = {
           ['qf'] = 'Quick Fix',
           ['tabman'] = 'Tab Manager',
           ['tagbar'] = 'Tagbar',
-          ['toggleterm'] = 'Terminal'
+          ['toggleterm'] = 'Terminal',
+          ['Trouble'] = 'Trouble',
         }
         local name = BufferTypeMap[vim.bo.filetype] or 'Editor'
         return string.format('  %s ', name)

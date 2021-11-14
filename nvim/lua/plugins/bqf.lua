@@ -12,7 +12,7 @@ bqf.setup({
         win_height = 12,
         win_vheight = 12,
         delay_syntax = 80,
-        border_chars = {'?', '?', '?', '?', '?', '?', '?', '?', '?'},
+        -- border_chars = {'?', '?', '?', '?', '?', '?', '?', '?', '?'},
         should_preview_cb = function(bufnr)
             local ret = true
             local filename = vim.api.nvim_buf_get_name(bufnr)
