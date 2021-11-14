@@ -1,6 +1,7 @@
 local remap = vim.api.nvim_set_keymap
 
 remap('n', ';', '<NOP>', { noremap = true, silent = true })
+remap('n', '.', ';', { noremap = true, silent = true})
 
 vim.g.mapleader =';'
 

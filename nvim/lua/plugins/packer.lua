@@ -99,5 +99,7 @@ return packer.startup(function()
 
   -- whichkey
   use 'folke/which-key.nvim'
+  -- quickscope
+  use 'unblevable/quick-scope'
 end)
 
