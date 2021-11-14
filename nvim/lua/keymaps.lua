@@ -1,4 +1,3 @@
-
 local remap = vim.api.nvim_set_keymap
 
 remap('n', ';', '<NOP>', { noremap = true, silent = true })
@@ -42,13 +41,14 @@ wk.register({
     r = {'<cmd>Telescope live_grep<cr>', 'Find grep'},
     b = {'<cmd>Telescope buffers<cr>', 'Find buffer'},
     s = {'<cmd>Telescope session-lens search_session<cr>', 'Find session'},
+    m = {'<cmd>Telescope marks<cr>', 'Find marks'},
   }
 })
 
 -- buffer line
 wk.register({
-  [']b'] = {'<cmd>BufferLineCycleNext<cr>', 'Go to next buffer'},
-  ['[b'] = {'<cmd>BufferLineCyclePrev<cr>', 'Go to previous buffer'},
+  [']b'] = {'<cmd>BufferLineCycleNext<cr>', 'Next buffer'},
+  ['[b'] = {'<cmd>BufferLineCyclePrev<cr>', 'Previous buffer'},
   ['<leader>1'] = {'<cmd>BufferLineGoToBuffer 1<cr>', 'Go to buffer 1'},
   ['<leader>2'] = {'<cmd>BufferLineGoToBuffer 2<cr>', 'Go to buffer 2'},
   ['<leader>3'] = {'<cmd>BufferLineGoToBuffer 3<cr>', 'Go to buffer 3'},
@@ -76,3 +76,8 @@ wk.register({
   }
 })
 wk.register{ ['gR'] = {'<cmd>Trouble lsp_references<cr>', 'Go to references opened by trouble'}}
+
+wk.register({
+ ['<c-g>'] = {'<cmd>lua ToggleQF(true)<cr>', 'Toggle quickfix list'},
+})
+

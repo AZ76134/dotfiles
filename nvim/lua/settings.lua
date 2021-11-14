@@ -130,3 +130,50 @@ end
 
 -- disable nvim intro
 opt.shortmess:append "sI"
+
+-- quickfix help
+local is_open_qf_l = false
+local is_open_qf_g = false
+
+cmd [[
+augroup fixlist
+    autocmd!
+    autocmd BufWinEnter quickfix lua set_qf_is_open()
+    autocmd BufWinLeave * lua set_qf_is_close()
+augroup END
+]]
+
+-- TODO: make this local
+_G.set_qf_is_open = function()
+  local info = vim.fn.getwininfo(vim.fn.win_getid())
+  if info.loclist == 1 then
+    is_open_qf_l = true
+  else
+    is_open_qf_g = true
+  end
+end
+
+_G.set_qf_is_close = function()
+  local info = vim.fn.getwininfo(vim.fn.win_getid())
+  if info.loclist == 1 then
+    is_open_qf_l = false
+  else
+    is_open_qf_g = false
+  end
+end
+
+_G.ToggleQF = function(global)
+  if global then
+    if is_open_qf_g then
+      cmd [[cclose]]
+    else
+      cmd [[copen]]
+    end
+  else
+    if is_open_qf_l then
+      cmd [[lclose]]
+    else
+      cmd [[lclose]]
+    end
+  end
+end

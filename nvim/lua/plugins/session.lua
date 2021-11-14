@@ -9,6 +9,7 @@ session.setup {
 local ok, sessionlens = pcall(require, 'session-lens')
 if (not ok) then return end
 
+vim.o.sessionoptions="blank,buffers,curdir,folds,help,options,tabpages,winsize,resize,winpos,terminal"
 sessionlens.setup {
   path_display = { 'shorten' },
 }
