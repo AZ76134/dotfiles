@@ -96,5 +96,8 @@ return packer.startup(function()
   }
   -- tabout
   use 'abecodes/tabout.nvim'
+
+  -- whichkey
+  use 'folke/which-key.nvim'
 end)
 

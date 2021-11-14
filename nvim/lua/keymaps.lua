@@ -1,87 +1,78 @@
+
 local remap = vim.api.nvim_set_keymap
-
-local t = function(str)
-  return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
-
-function _G.tab_binding()
-  if vim.fn.pumvisible() ~= 0 then
-    return t("<C-n>")
-  elseif vim.fn["vsnip#available"](1) ~= 0 then
-    return t("<Plug>(vsnip-expand-or-jump)")
-  else
-    return '<Cmd>lua require(\'tabout\').tabout()<CR>'
-    -- return t("<Plug>(Tabout)")
-  end
-end
-
-function _G.s_tab_binding()
-  if vim.fn.pumvisible() ~= 0 then
-    return replace_keycodes("<C-p>")
-  elseif vim.fn["vsnip#jumpable"](-1) ~= 0 then
-    return replace_keycodes("<Plug>(vsnip-jump-prev)")
-  else
-    return '<Cmd>lua require(\'tabout\').taboutBack()<CR>'
-    -- return t("<Plug>(TaboutBack)")
-  end
-end
 
 remap('n', ';', '<NOP>', { noremap = true, silent = true })
 
 vim.g.mapleader =';'
 
--- nohl
-remap('n', '<Leader>h', ':set hlsearch!<CR>', { noremap = true, silent = true})
+local ok, wk = pcall(require, 'which-key')
+if (not ok) then return end
 
--- explorer
-remap('n', '<Leader>e', ':CHADopen<CR>', { noremap = true, silent = true})
+local visual = {
+  mode = "v", -- NORMAL mode
+  prefix = "",
+  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true, -- use `silent` when creating keymaps
+  noremap = true, -- use `noremap` when creating keymaps
+  nowait = false, -- use `nowait` when creating keymaps
+}
 
--- window switch
-remap('n', '<C-h>', '<C-w>h', { silent = true })
-remap('n', '<C-j>', '<C-w>j', { silent = true })
-remap('n', '<C-l>', '<C-w>l', { silent = true })
-remap('n', '<C-k>', '<C-w>k', { silent = true })
+wk.register{ ['<leader>h'] = {':set hlsearch!<cr>', 'Toggle hightlight search'}}
 
--- indent
-remap('v', '<', '<gv', { noremap = true, silent = true})
-remap('v', '>', '>gv', { noremap = true, silent = true})
+wk.register{ ['<leader>e'] = {'<cmd>CHADopen<cr>', 'Toggle file explorer'}}
 
--- tab
--- remap("i", "<Tab>", "v:lua.tab_binding()", { expr = true})
--- remap("i", "<S-Tab>", "v:lua.s_tab_binding()", { expr = true})
+wk.register({
+  ['<C-h>'] = {'<C-w>h', 'Switch to left window' },
+  ['<C-j>'] = {'<C-w>j', 'Switch to lower window' },
+  ['<C-l>'] = {'<C-w>l', 'Switch to right window' },
+  ['<C-k>'] = {'<C-w>k', 'Switch to upper window' },
+})
 
--- move line
--- remap('x', 'J', ':move \'<+1<CR>gv-gv\'', { noremap = true, silent = true})
--- remap('x', 'K', ':move \'<-2<CR>gv-gv\'', { noremap = true, silent = true})
+wk.register({
+  ['<'] = {'<gv', 'Shift context to left' },
+  ['>'] = {'>gv', 'Shift context to right' }
+}, visual)
 
--- telescope
-remap('n', '<Leader>ff', ':Telescope find_files<CR>', { noremap = true, silent = true})
-remap('n', '<Leader>fr', ':Telescope live_grep<CR>', { noremap = true, silent = true})
-remap('n', '<Leader>fb', ':Telescope buffers<CR>', { noremap = true, silent = true})
-remap('n', '<Leader>fs', ':Telescope session-lens search_session<CR>', { noremap = true, silent = true})
+wk.register({
+  ['<leader>f'] = {
+    name='+find',
+    f = {'<cmd>Telescope find_files<cr>', 'Find file'},
+    o = {'<cmd>Telescope oldfiles<cr>', 'Find recent open file'},
+    c = {'<cmd>Telescope current_buffer_fuzzy_find<cr>', 'Find in current buffer'},
+    r = {'<cmd>Telescope live_grep<cr>', 'Find grep'},
+    b = {'<cmd>Telescope buffers<cr>', 'Find buffer'},
+    s = {'<cmd>Telescope session-lens search_session<cr>', 'Find session'},
+  }
+})
 
 -- buffer line
-remap('n', ']b', ':BufferLineCycleNext<CR>', { noremap = true, silent = true})
-remap('n', '[b', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true})
-remap('n', '<Leader>1', ':BufferLineGoToBuffer 1<CR>', { noremap = true, silent = true})
-remap('n', '<Leader>2', ':BufferLineGoToBuffer 2<CR>', { noremap = true, silent = true})
-remap('n', '<Leader>3', ':BufferLineGoToBuffer 3<CR>', { noremap = true, silent = true})
-remap('n', '<Leader>4', ':BufferLineGoToBuffer 4<CR>', { noremap = true, silent = true})
-remap('n', '<Leader>5', ':BufferLineGoToBuffer 5<CR>', { noremap = true, silent = true})
-remap('n', '<Leader>6', ':BufferLineGoToBuffer 6<CR>', { noremap = true, silent = true})
-remap('n', '<Leader>7', ':BufferLineGoToBuffer 7<CR>', { noremap = true, silent = true})
-remap('n', '<Leader>8', ':BufferLineGoToBuffer 8<CR>', { noremap = true, silent = true})
-remap('n', '<Leader>9', ':BufferLineGoToBuffer 9<CR>', { noremap = true, silent = true})
--- close all but this buffer
-remap('n', '<Leader>b', ':%bd|e#|bd#<CR>', { noremap = true, silent = true})
+wk.register({
+  [']b'] = {'<cmd>BufferLineCycleNext<cr>', 'Go to next buffer'},
+  ['[b'] = {'<cmd>BufferLineCyclePrev<cr>', 'Go to previous buffer'},
+  ['<leader>1'] = {'<cmd>BufferLineGoToBuffer 1<cr>', 'Go to buffer 1'},
+  ['<leader>2'] = {'<cmd>BufferLineGoToBuffer 2<cr>', 'Go to buffer 2'},
+  ['<leader>3'] = {'<cmd>BufferLineGoToBuffer 3<cr>', 'Go to buffer 3'},
+  ['<leader>4'] = {'<cmd>BufferLineGoToBuffer 4<cr>', 'Go to buffer 4'},
+  ['<leader>5'] = {'<cmd>BufferLineGoToBuffer 5<cr>', 'Go to buffer 5'},
+  ['<leader>6'] = {'<cmd>BufferLineGoToBuffer 6<cr>', 'Go to buffer 6'},
+  ['<leader>7'] = {'<cmd>BufferLineGoToBuffer 7<cr>', 'Go to buffer 7'},
+  ['<leader>8'] = {'<cmd>BufferLineGoToBuffer 8<cr>', 'Go to buffer 8'},
+  ['<leader>9'] = {'<cmd>BufferLineGoToBuffer 9<cr>', 'Go to buffer 9'},
+  ['<leader>b'] = {'<cmd>%bd|e#|bd#<cr>', 'Close all but current buffer'},
+})
 
 -- toggleterm
-remap("n", "<leader>g", "<cmd>lua lazygit_toggle()<CR>", {noremap = true, silent = true})
+wk.register{ ['<leader>g'] = {'<cmd>lua lazygit_toggle()<cr>', 'Toggle lazy git'}}
 
 -- lsp related
-remap("n", "<leader>xx", "<cmd>Trouble<cr>", {silent = true, noremap = true})
-remap("n", "<leader>xw", "<cmd>Trouble lsp_workspace_diagnostics<cr>", {silent = true, noremap = true})
-remap("n", "<leader>xd", "<cmd>Trouble lsp_document_diagnostics<cr>", {silent = true, noremap = true})
-remap("n", "<leader>xl", "<cmd>Trouble loclist<cr>", {silent = true, noremap = true})
-remap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", {silent = true, noremap = true})
-remap("n", "gR", "<cmd>Trouble lsp_references<cr>", {silent = true, noremap = true})
+wk.register({
+  ['<leader>x'] = {
+    name='+trouble',
+    x = {'<cmd>Trouble<cr>', 'Open trouble'},
+    w = {'<cmd>Trouble lsp_workspace_diagnostics<cr>', 'Open trouble diagnostics for workspace'},
+    d = {'<cmd>Trouble lsp_document_diagnostics<cr>', 'Open trouble diagnostics for document'},
+    l = {'<cmd>Trouble loclist<cr>', 'Open trouble location list'},
+    q = {'<cmd>Trouble quickfix<cr>', 'Open trouble quickfix'},
+  }
+})
+wk.register{ ['gR'] = {'<cmd>Trouble lsp_references<cr>', 'Go to references opened by trouble'}}

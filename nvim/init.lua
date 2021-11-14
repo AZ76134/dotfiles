@@ -1,6 +1,7 @@
 require('plugins/packer')
 require('impatient').enable_profile()
 require('plugins/startup')
+require('plugins/whichkey')
 require('settings')
 require('keymaps')
 require('plugins/dashboard')
