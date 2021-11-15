@@ -1,16 +1,22 @@
 local cmd = vim.api.nvim_command
 local fn = vim.fn
+local helpers = require 'helpers'
 
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = helpers.path.join(fn.stdpath('data'), '/site/pack/packer/start/packer.nvim')
 
 if fn.empty(fn.glob(install_path)) > 0 then
   cmd('!git clone https://github.com/wbthomason/packer.nvim '..install_path)
   cmd('packadd packer.nvim')
 end
 
+local tmp_path = helpers.path.join(fn.stdpath('data'), '/tmp')
+if helpers.path.is_dir(tmp_path) == false then
+ cmd('!mkdir '..tmp_path)
+end
+
 local packer = require 'packer'
 packer.init({
-  compile_path = vim.fn.stdpath('config')..'/lua/packer_compiled.lua'
+  compile_path = helpers.path.join(fn.stdpath('config'), '/lua/packer_compiled.lua')
 })
 
 return packer.startup(function()
@@ -110,5 +116,8 @@ return packer.startup(function()
   use 'folke/which-key.nvim'
   -- quickscope
   use 'unblevable/quick-scope'
+  -- testing
+  use 'vim-test/vim-test'
+  use 'fatih/vim-go'
 end)
 

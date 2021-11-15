@@ -44,8 +44,7 @@ wk.register({
     s = {'<cmd>Telescope session-lens search_session<cr>', 'Find session'},
     m = {'<cmd>Telescope marks<cr>', 'Find marks'},
     p = {'<cmd>lua require\'telescope\'.extensions.repo.list{}<cr>', 'Find repo'},
-  },
-  ['<leader>f?'] = {'<cmd>Cheatsheet<cr>', 'Find cheatsheet'},
+  }
 })
 
 -- buffer line
@@ -61,7 +60,6 @@ wk.register({
   ['<leader>7'] = {'<cmd>BufferLineGoToBuffer 7<cr>', 'Go to buffer 7'},
   ['<leader>8'] = {'<cmd>BufferLineGoToBuffer 8<cr>', 'Go to buffer 8'},
   ['<leader>9'] = {'<cmd>BufferLineGoToBuffer 9<cr>', 'Go to buffer 9'},
-  ['<leader>b'] = {'<cmd>%bd|e#|bd#<cr>', 'Close all but current buffer'},
 })
 
 -- toggleterm
@@ -84,3 +82,19 @@ wk.register({
  ['<c-g>'] = {'<cmd>lua ToggleQF(true)<cr>', 'Toggle quickfix list'},
 })
 
+wk.register({
+  ['<leader>t'] = {
+    name='+test',
+    n = {'<cmd>TestNearest<cr>', 'Test nearest'},
+    f = {'<cmd>TestFile<cr>', 'Test file'},
+    l = {'<cmd>TestLast', 'Test last'},
+  }
+})
+
+wk.register({
+  ['<leader>d'] = {
+    name='+delete',
+    c = {'<cmd>bd<cr>', 'Delete current buffer'},
+    b = {'<cmd>%bd|e#|bd#<cr>', 'Delete all but current buffer'},
+  }
+})
