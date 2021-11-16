@@ -68,7 +68,7 @@ local lazygit = Terminal:new({
   end,
   -- function to run on closing the terminal
   on_close = function(term)
-    vim.cmd("Closing terminal")
+    -- vim.cmd("Closing terminal")
   end,
 })
 
