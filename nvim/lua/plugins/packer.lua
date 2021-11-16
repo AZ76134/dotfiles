@@ -66,6 +66,7 @@ return packer.startup(function()
 
   -- telescope
   use { 'nvim-telescope/telescope.nvim', requires = {'nvim-lua/plenary.nvim'}}
+  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use { 'junegunn/fzf', run = function() vim.fn['fzf#install']() end }
   use { 'nvim-telescope/telescope-symbols.nvim', require = {'nvim-telescope/nvim-telescope'} }
   use { 'cljoly/telescope-repo.nvim', require = {'nvim-telescope/nvim-telescope'} }
