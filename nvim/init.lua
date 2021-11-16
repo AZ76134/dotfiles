@@ -1,3 +1,4 @@
+require('global_config')
 require('plugins/packer')
 require('impatient').enable_profile()
 require('plugins/startup')

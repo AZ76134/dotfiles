@@ -22,6 +22,28 @@ require 'nvim-treesitter.configs'.setup {
     "go",
     "lua"
   },
+  textobjects = {
+    move = {
+      enable = true,
+      set_jumps = true, -- whether to set jumps in the jumplist
+      goto_next_start = {
+        ["]m"] = "@class.outer",
+        ["]]"] = "@function.outer",
+      },
+      goto_next_end = {
+        ["]M"] = "@class.outer",
+        ["]["] = "@function.outer",
+      },
+      goto_previous_start = {
+        ["[m"] = "@class.outer",
+        ["[["] = "@function.outer",
+      },
+      goto_previous_end = {
+        ["[M"] = "@class.outer",
+        ["[]"] = "@function.outer",
+      },
+    },
+  },
   rainbow = {
     enable = true,
     -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for

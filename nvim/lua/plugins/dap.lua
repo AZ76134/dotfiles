@@ -3,59 +3,90 @@
 --
 -- dap_go.setup{}
 
-require('go').setup({
-  goimport='gopls', -- goimport command, can be gopls[default] or goimport
-  gofmt = 'gofumpt', --gofmt cmd,
-  max_line_len = 120, -- max line length in goline format
-  tag_transform = false, -- tag_transfer  check gomodifytags for details
-  test_template = '', -- default to testify if not set; g:go_nvim_tests_template  check gotests for details
-  test_template_dir = '', -- default to nil if not set; g:go_nvim_tests_template_dir  check gotests for details
-  comment_placeholder = '' ,  -- comment_placeholder your cool placeholder e.g. ? ?  ?  ?  ?
-  icons = {breakpoint = '??', currentpos = '??'},
-  verbose = false,  -- output loginf in messages
-  lsp_cfg = false, -- true: apply go.nvim non-default gopls setup, if it is a list, will merge with gopls setup e.g.
-                   -- lsp_cfg = {settings={gopls={matcher='CaseInsensitive', ['local'] = 'your_local_module_path', gofumpt = true }}}
-  lsp_gofumpt = false, -- true: set default gofmt in gopls format to gofumpt
-  lsp_on_attach = false, -- if a on_attach function provided:  attach on_attach function to gopls
-                       -- true: will use go.nvim on_attach if true
-                       -- nil/false do nothing
-  lsp_codelens = false, -- set to false to disable codelens, true by default
-  gopls_remote_auto = true, -- add -remote=auto to gopls
-  gopls_cmd = nil, -- if you need to specify gopls path and cmd, e.g {"/home/user/lsp/gopls", "-logfile",
-  fillstruct = 'gopls', -- can be nil (use fillstruct, slower) and gopls "/var/log/gopls.log" }
-  lsp_diag_hdlr = true, -- hook lsp diag handler
-  dap_debug = true, -- set to false to disable dap
-  dap_debug_keymap = false, -- set keymaps for debugger
-  dap_debug_gui = true, -- set to true to enable dap gui, highly recommand
-  dap_debug_vt = true, -- set to true to enable dap virtual text
-})
--- local ok,go = pcall(require, 'go')
--- if (not ok) then return end
---
--- go.setup ({
---   goimport='gopls', -- goimport command, can be gopls[default] or goimport
---   gofmt = 'gofumpt', --gofmt cmd,
---   max_line_len = 120, -- max line length in goline format
---   tag_transform = false, -- tag_transfer  check gomodifytags for details
---   test_template = '', -- default to testify if not set; g:go_nvim_tests_template  check gotests for details
---   test_template_dir = '', -- default to nil if not set; g:go_nvim_tests_template_dir  check gotests for details
---   comment_placeholder = '' ,  -- comment_placeholder your cool placeholder e.g. ? ?  ?  ?  ?
---   icons = {breakpoint = '??', currentpos = '??'},
---   verbose = false,  -- output loginf in messages
---   lsp_cfg = false, -- true: apply go.nvim non-default gopls setup, if it is a list, will merge with gopls setup e.g.
---                    -- lsp_cfg = {settings={gopls={matcher='CaseInsensitive', ['local'] = 'your_local_module_path', gofumpt = true }}}
---   lsp_gofumpt = false, -- true: set default gofmt in gopls format to gofumpt
---   lsp_on_attach = true, -- if a on_attach function provided:  attach on_attach function to gopls
---                        -- true: will use go.nvim on_attach if true
---                        -- nil/false do nothing
---   lsp_codelens = true, -- set to false to disable codelens, true by default
---   gopls_remote_auto = true, -- add -remote=auto to gopls
---   gopls_cmd = nil, -- if you need to specify gopls path and cmd, e.g {"/home/user/lsp/gopls", "-logfile",
---   fillstruct = 'gopls', -- can be nil (use fillstruct, slower) and gopls
---   "/var/log/gopls.log" }
---   lsp_diag_hdlr = true, -- hook lsp diag handler
---   dap_debug = true, -- set to false to disable dap
---   dap_debug_keymap = true, -- set keymaps for debugger
---   dap_debug_gui = true, -- set to true to enable dap gui, highly recommand
---   dap_debug_vt = true, -- set to true to enable dap virtual text
--- })
+local ok, dap = pcall(require, 'dap')
+if (not ok) then return end
+
+dap.adapters.go = function(callback, config)
+  local stdout = vim.loop.new_pipe(false)
+  local handle
+  local pid_or_err
+  local host = config.host or "127.0.0.1"
+  local port = config.port or "38697"
+  local addr = string.format("%s:%s", host, port)
+  local opts = {
+    stdio = {nil, stdout},
+    args = {"dap", "-l", addr},
+    detached = true
+  }
+  handle, pid_or_err = vim.loop.spawn("dlv", opts, function(code)
+    stdout:close()
+    handle:close()
+    if code ~= 0 then
+      print('dlv exited with code', code)
+    end
+  end)
+  assert(handle, 'Error running dlv: ' .. tostring(pid_or_err))
+  stdout:read_start(function(err, chunk)
+    assert(not err, err)
+    if chunk then
+      vim.schedule(function()
+        require('dap.repl').append(chunk)
+      end)
+    end
+  end)
+  -- Wait for delve to start
+  vim.defer_fn(
+    function()
+      callback({type = "server", host = "127.0.0.1", port = port})
+    end,
+    100)
+end
+
+dap.configurations.go = {
+  {
+    type = "go",
+    name = "Debug",
+    request = "launch",
+    program = "${file}",
+  },
+  {
+    type = "go",
+    name = "Debug test",
+    request = "launch",
+    mode = "test",
+    program = "${file}",
+  },
+  {
+    type = "go",
+    name = "Debug test (go.mod)",
+    request = "launch",
+    mode = "test",
+    program = "./${relativeFileDirname}",
+  }
+}
+
+local function debug_test(testname)
+  dap.run({
+    type = "go",
+    name = testname,
+    request = "launch",
+    mode = "test",
+    program = "./${relativeFileDirname}",
+    args = {"-test.run", testname},
+  })
+end
+
+local function debug_nearest_test()
+  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+  row, col = row, col + 1
+  local ns = require('helpers.treesitter').go.get_func_method_node_at_pos(row, col)
+  assert(ns, 'test not found')
+  print('test name '..ns.name)
+  debug_test(ns.name)
+end
+
+require'nvim-dap-virtual-text'.setup{}
+
+return {
+  debug_nearest_test = debug_nearest_test
+}

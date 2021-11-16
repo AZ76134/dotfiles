@@ -102,9 +102,14 @@ end
 -- Terminal visual tweaks
 --- enter insert mode when switching to terminal
 --- close terminal buffer on process exit
+
+-- cmd [[
+--     autocmd TermOpen * setlocal listchars= nonumber norelativenumber nocursorline
+--     autocmd TermOpen * startinsert
+--     autocmd BufLeave term://* stopinsert
+-- ]]
 cmd [[
     autocmd TermOpen * setlocal listchars= nonumber norelativenumber nocursorline
-    autocmd TermOpen * startinsert
     autocmd BufLeave term://* stopinsert
 ]]
 

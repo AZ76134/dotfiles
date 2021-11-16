@@ -9,11 +9,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
   cmd('packadd packer.nvim')
 end
 
-local tmp_path = helpers.path.join(fn.stdpath('data'), '/tmp')
-if helpers.path.is_dir(tmp_path) == false then
- cmd('!mkdir '..tmp_path)
-end
-
 local packer = require 'packer'
 packer.init({
   compile_path = helpers.path.join(fn.stdpath('config'), '/lua/packer_compiled.lua')
@@ -61,6 +56,8 @@ return packer.startup(function()
   use 'nvim-treesitter/nvim-treesitter'
   use 'p00f/nvim-ts-rainbow'
   use 'romgrk/nvim-treesitter-context'
+  use 'nvim-treesitter/nvim-treesitter-textobjects'
+
   -- better escape
   use "max397574/better-escape.nvim"
 
@@ -119,7 +116,7 @@ return packer.startup(function()
   use 'unblevable/quick-scope'
   -- testing
   use 'vim-test/vim-test'
-  use 'fatih/vim-go'
+  -- use 'fatih/vim-go'
   -- dap
   use 'mfussenegger/nvim-dap'
   use 'rcarriga/nvim-dap-ui'
