@@ -95,6 +95,9 @@ opt.completeopt = 'menuone,noselect'
 -----------------------------------------------------------
 -- open a terminal pane on the right using :Term
 cmd [[command Term :botright vsplit term://$SHELL]]
+if require'helpers'.os.is_windows then
+  opt.shell = 'cmd'
+end
 
 -- Terminal visual tweaks
 --- enter insert mode when switching to terminal
