@@ -81,7 +81,7 @@ local function debug_nearest_test()
   row, col = row, col + 1
   local ns = require('helpers.treesitter').go.get_func_method_node_at_pos(row, col)
   assert(ns, 'test not found')
-  print('test name '..ns.name)
+  print('Attaching debug to test: '..ns.name)
   debug_test(ns.name)
 end
 
