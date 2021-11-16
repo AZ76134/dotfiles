@@ -38,6 +38,7 @@ wk.register({
   ['<leader>f'] = {
     name='+find',
     f = {'<cmd>Telescope find_files<cr>', 'Find file'},
+    g = {'<cmd>Telescope git_files<cr>', 'Find git file'},
     o = {'<cmd>Telescope oldfiles<cr>', 'Find recent open file'},
     c = {'<cmd>Telescope current_buffer_fuzzy_find<cr>', 'Find in current buffer'},
     r = {'<cmd>Telescope live_grep<cr>', 'Find grep'},
@@ -61,7 +62,7 @@ wk.register({
   ['<leader>7'] = {'<cmd>BufferLineGoToBuffer 7<cr>', 'Go to buffer 7'},
   ['<leader>8'] = {'<cmd>BufferLineGoToBuffer 8<cr>', 'Go to buffer 8'},
   ['<leader>9'] = {'<cmd>BufferLineGoToBuffer 9<cr>', 'Go to buffer 9'},
-  ['<leader>bc'] = {'<cmd>bd<cr>', 'Delete current buffer'},
+  ['<leader>bc'] = {'<cmd>bd!<cr>', 'Delete current buffer'},
   ['<leader>bq'] = {'<cmd>%bd|e#|bd#<cr>', 'Delete all but current buffer'},
 })
 
@@ -115,5 +116,11 @@ wk.register({
    i = { '<cmd>lua require"dap.ui.variables".hover()<cr>', 'Hover variable'},
    i = { '<cmd>lua require"dap.ui.variables".visual_hover()<cr>', 'Visual hover variable'},
    u = { '<cmd>lua require"dapui".toggle()<cr>', 'Toggle UI'},
- }
+ },
+ ['<space>j']= { '<cmd>lua require"dap".step_over()<cr>', 'Debug step over'},
+ ['<space>h']= { '<cmd>lua require"dap".step_into()<cr>', 'Debug step into'},
+ ['<space>l']= { '<cmd>lua require"dap".step_out()<cr>', 'Debug step out'},
+ ['<space>J']= { '<cmd>lua require"dap".continue()<cr>', 'Debug continue'},
+ ['<space>n']= { '<cmd>lua require"dap".down()<cr>', 'Debug go to next frame'},
+ ['<space>p']= { '<cmd>lua require"dap".up()<cr>', 'Debug go to previous frame'},
 })
