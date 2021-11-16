@@ -12,3 +12,11 @@ vim.fn.sign_define("LspDiagnosticsSignHint", {text = "💡", numhl = "GruvboxAqu
 -- vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "", numhl = "GruvboxYellow"})
 -- vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "", numhl = "GruvboxBlue"})
 -- vim.fn.sign_define("LspDiagnosticsSignHint", {text = "ﯧ", numhl = "GruvboxAqua"})
+
+-- vim.fn.sign_define('DapBreakpoint', {text='🟥',  linehl='', numhl=''})
+-- vim.fn.sign_define('DapBreakpointRejected', {text='🟦', texthl='', linehl='', numhl=''})
+-- vim.fn.sign_define('DapStopped', {text='', texthl='🟢', linehl='', numhl=''})
+
+vim.fn.sign_define('DapBreakpoint', {text= '🟥',  linehl='', numhl=''})
+vim.fn.sign_define('DapBreakpointRejected', {text= '🟦', texthl='', linehl='', numhl=''})
+vim.fn.sign_define('DapStopped', {text= '👟', texthl= '', linehl='', numhl=''})

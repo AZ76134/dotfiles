@@ -1,6 +1,7 @@
 local remap = vim.api.nvim_set_keymap
 
 remap('n', ';', '<NOP>', { noremap = true, silent = true })
+remap('n', ' ', '<NOP>', { noremap = true, silent = true })
 remap('n', '.', ';', { noremap = true, silent = true})
 
 vim.g.mapleader =';'
@@ -43,7 +44,7 @@ wk.register({
     b = {'<cmd>Telescope buffers<cr>', 'Find buffer'},
     s = {'<cmd>Telescope session-lens search_session<cr>', 'Find session'},
     m = {'<cmd>Telescope marks<cr>', 'Find marks'},
-    p = {'<cmd>lua require\'telescope\'.extensions.repo.list{}<cr>', 'Find repo'},
+    p = {'<cmd>lua require"telescope".extensions.repo.list{}<cr>', 'Find repo'},
   }
 })
 
@@ -60,6 +61,8 @@ wk.register({
   ['<leader>7'] = {'<cmd>BufferLineGoToBuffer 7<cr>', 'Go to buffer 7'},
   ['<leader>8'] = {'<cmd>BufferLineGoToBuffer 8<cr>', 'Go to buffer 8'},
   ['<leader>9'] = {'<cmd>BufferLineGoToBuffer 9<cr>', 'Go to buffer 9'},
+  ['<leader>bc'] = {'<cmd>bd<cr>', 'Delete current buffer'},
+  ['<leader>bq'] = {'<cmd>%bd|e#|bd#<cr>', 'Delete all but current buffer'},
 })
 
 -- toggleterm
@@ -88,13 +91,29 @@ wk.register({
     n = {'<cmd>TestNearest<cr>', 'Test nearest'},
     f = {'<cmd>TestFile<cr>', 'Test file'},
     l = {'<cmd>TestLast', 'Test last'},
+    -- d = {'<cmd>lua require"dap-go".debug_test()<cr>', 'Test debug'},
+    d = {'<cmd>lua require"go.dap".run(nearest)<cr>', 'Test debug'},
+    -- d = {'<cmd>lua DebugNearest()<cr>', 'Test debug'},
+    -- d = {'<cmd>TestNearest -strategy=debug<cr>', 'Test debug'},
   }
 })
 
+-- wk.register({
+--   ['<leader>d'] = {
+--     name='+delete',
+--     c = {'<cmd>bd<cr>', 'Delete current buffer'},
+--     b = {'<cmd>%bd|e#|bd#<cr>', 'Delete all but current buffer'},
+--   }
+-- })
+
 wk.register({
-  ['<leader>d'] = {
-    name='+delete',
-    c = {'<cmd>bd<cr>', 'Delete current buffer'},
-    b = {'<cmd>%bd|e#|bd#<cr>', 'Delete all but current buffer'},
-  }
+ ['<leader>d'] = {
+   name='+debug',
+   h = { '<cmd>lua require"dap".toggle_breakpoint()<cr>', 'Toggle break point'},
+   H = { "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>", 'Set break point'},
+   c = { '<cmd>lua require"dap".terminate()<cr>', 'Terminate debug session'},
+   i = { '<cmd>lua require"dap.ui.variables".hover()<cr>', 'Hover variable'},
+   i = { '<cmd>lua require"dap.ui.variables".visual_hover()<cr>', 'Visual hover variable'},
+   u = { '<cmd>lua require"dapui".toggle()<cr>', 'Toggle UI'},
+ }
 })

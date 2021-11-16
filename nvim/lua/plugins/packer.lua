@@ -119,5 +119,13 @@ return packer.startup(function()
   -- testing
   use 'vim-test/vim-test'
   use 'fatih/vim-go'
+  -- dap
+  use 'mfussenegger/nvim-dap'
+  use 'rcarriga/nvim-dap-ui'
+  use 'nvim-telescope/telescope-dap.nvim'
+  use 'theHamsta/nvim-dap-virtual-text'
+  use 'leoluz/nvim-dap-go'
+  use 'ray-x/go.nvim'
+
 end)
 
