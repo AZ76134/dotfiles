@@ -126,6 +126,8 @@ return packer.startup(function()
   use 'theHamsta/nvim-dap-virtual-text'
   use 'leoluz/nvim-dap-go'
   use 'ray-x/go.nvim'
+  -- undo tree
+  use 'mbbill/undotree'
 
 end)
 
