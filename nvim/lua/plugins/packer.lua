@@ -118,6 +118,8 @@ return packer.startup(function()
   use 'theHamsta/nvim-dap-virtual-text'
   -- undo tree
   use 'mbbill/undotree'
+  -- light speed
+  use 'ggandor/lightspeed.nvim'
 
 end)
 
