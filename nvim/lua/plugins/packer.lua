@@ -90,9 +90,6 @@ return packer.startup(function()
   -- toggle term
   use {"akinsho/toggleterm.nvim"}
 
-  -- startup
-  use 'henriquehbr/nvim-startup.lua'
-
   -- faster filetype loading
   use 'nathom/filetype.nvim'
 
@@ -113,11 +110,8 @@ return packer.startup(function()
 
   -- whichkey
   use 'folke/which-key.nvim'
-  -- quickscope
-  use 'unblevable/quick-scope'
   -- testing
   use 'vim-test/vim-test'
-  -- use 'fatih/vim-go'
   -- dap
   use 'mfussenegger/nvim-dap'
   use 'nvim-telescope/telescope-dap.nvim'
