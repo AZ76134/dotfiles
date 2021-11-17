@@ -63,7 +63,8 @@ return packer.startup(function()
 
   -- telescope
   use { 'nvim-telescope/telescope.nvim', requires = {'nvim-lua/plenary.nvim'}}
-  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  -- use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use { 'nvim-telescope/telescope-fzy-native.nvim', required = {'nvim-telescope/nvim-telescope'}}
   use { 'junegunn/fzf', run = function() vim.fn['fzf#install']() end }
   use { 'nvim-telescope/telescope-symbols.nvim', require = {'nvim-telescope/nvim-telescope'} }
   use { 'cljoly/telescope-repo.nvim', require = {'nvim-telescope/nvim-telescope'} }
@@ -119,11 +120,8 @@ return packer.startup(function()
   -- use 'fatih/vim-go'
   -- dap
   use 'mfussenegger/nvim-dap'
-  use 'rcarriga/nvim-dap-ui'
   use 'nvim-telescope/telescope-dap.nvim'
   use 'theHamsta/nvim-dap-virtual-text'
-  use 'leoluz/nvim-dap-go'
-  use 'ray-x/go.nvim'
   -- undo tree
   use 'mbbill/undotree'
 

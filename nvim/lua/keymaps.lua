@@ -46,6 +46,7 @@ wk.register({
     s = {'<cmd>Telescope session-lens search_session<cr>', 'Find session'},
     m = {'<cmd>Telescope marks<cr>', 'Find marks'},
     p = {'<cmd>lua require"telescope".extensions.repo.list{}<cr>', 'Find repo'},
+    ['?'] = {'<cmd>Cheatsheet<cr>', 'Open cheat sheet'}
   }
 })
 
@@ -92,21 +93,9 @@ wk.register({
     n = {'<cmd>TestNearest<cr>', 'Test nearest'},
     f = {'<cmd>TestFile<cr>', 'Test file'},
     l = {'<cmd>TestLast', 'Test last'},
-    -- d = {'<cmd>lua require"dap-go".debug_test()<cr>', 'Test debug'},
     d = {'<cmd>lua require"plugins/dap".debug_nearest_test()<cr>', 'Test debug'},
-    -- d = {'<cmd>lua require"go.dap".run(nearest)<cr>', 'Test debug'},
-    -- d = {'<cmd>lua DebugNearest()<cr>', 'Test debug'},
-    -- d = {'<cmd>TestNearest -strategy=debug<cr>', 'Test debug'},
   }
 })
-
--- wk.register({
---   ['<leader>d'] = {
---     name='+delete',
---     c = {'<cmd>bd<cr>', 'Delete current buffer'},
---     b = {'<cmd>%bd|e#|bd#<cr>', 'Delete all but current buffer'},
---   }
--- })
 
 wk.register({
  ['<leader>d'] = {
@@ -118,7 +107,9 @@ wk.register({
    i = { '<cmd>lua require"dap.ui.variables".visual_hover()<cr>', 'Visual hover variable'},
    ['?'] = { '<cmd>lua require"dap.ui.variables".scopes()<cr>', 'Variable scopes'},
    ['?'] = { '<cmd>lua local widgets=require"dap.ui.widgets";widgets.centered_float(widgets.scopes)<cr>', 'Center variable scopes'},
-   u = { '<cmd>lua require"dapui".toggle()<cr>', 'Toggle UI'},
+   -- u = { '<cmd>lua require"dapui".toggle()<cr>', 'Toggle UI'},
+   f = {'<cmd>lua require"telescope".extensions.dap.frames()cr>', 'Find frames'},
+   b = {'<cmd>lua require"telescope".extensions.dap.list_breakpoints()cr>', 'Find breakpoints'},
  },
  ['<space>j']= { '<cmd>lua require"dap".step_over()<cr>', 'Debug step over'},
  ['<space>h']= { '<cmd>lua require"dap".step_into()<cr>', 'Debug step into'},
