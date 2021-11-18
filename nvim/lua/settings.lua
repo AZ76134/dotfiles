@@ -191,3 +191,6 @@ _G.ToggleQF = function(global)
     end
   end
 end
+
+-- lsp hover diagnostics
+-- cmd [[ autocmd CursorHold * lua vim.lsp.util.show_line_diagnostics() ]]
