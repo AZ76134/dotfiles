@@ -122,6 +122,8 @@ return packer.startup(function()
   use 'ggandor/lightspeed.nvim'
 	-- buffer
 	use 'kazhala/close-buffers.nvim'
+	-- window stabilize
+	use 'luukvbaal/stabilize.nvim'
 
 end)
 
