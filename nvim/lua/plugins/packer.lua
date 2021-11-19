@@ -120,6 +120,8 @@ return packer.startup(function()
   use 'mbbill/undotree'
   -- light speed
   use 'ggandor/lightspeed.nvim'
+	-- buffer
+	use 'kazhala/close-buffers.nvim'
 
 end)
 

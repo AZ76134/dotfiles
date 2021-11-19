@@ -63,8 +63,16 @@ wk.register({
   ['<leader>7'] = {'<cmd>BufferLineGoToBuffer 7<cr>', 'Go to buffer 7'},
   ['<leader>8'] = {'<cmd>BufferLineGoToBuffer 8<cr>', 'Go to buffer 8'},
   ['<leader>9'] = {'<cmd>BufferLineGoToBuffer 9<cr>', 'Go to buffer 9'},
-  ['<leader>bc'] = {'<cmd>bd!<cr>', 'Delete current buffer'},
-  ['<leader>bq'] = {'<cmd>%bd|e#|bd#<cr>', 'Delete all but current buffer'},
+  -- ['<leader>bc'] = {'<cmd>bd!<cr>', 'Delete current buffer'},
+  -- ['<leader>bq'] = {'<cmd>%bd|e#|bd#<cr>', 'Delete all but current buffer'},
+  ['<leader>bc'] = {
+		'<cmd>lua require("close_buffers").delete({type = "this"})<cr>',
+		'Delete current buffer',
+	},
+  ['<leader>bq'] = {
+		'<cmd>lua require("close_buffers").delete({type = "other"})<cr>',
+		'Delete all but current buffer',
+	},
 })
 
 -- toggleterm
@@ -79,9 +87,14 @@ wk.register({
     d = {'<cmd>Trouble lsp_document_diagnostics<cr>', 'Open trouble diagnostics for document'},
     l = {'<cmd>Trouble loclist<cr>', 'Open trouble location list'},
     q = {'<cmd>Trouble quickfix<cr>', 'Open trouble quickfix'},
-  }
+  },
+	['gR'] = {'<cmd>Trouble lsp_references<cr>', 'Go to references opened by trouble'},
+	['<leader>l'] = {
+		name='+language server',
+		r = {'<cmd>LspRestart<cr>', 'Restart language server'},
+		d = {'<cmd>Telescope lsp_workspace_diagnostics<cr>', 'Workspace diagnostics'}
+	},
 })
-wk.register{ ['gR'] = {'<cmd>Trouble lsp_references<cr>', 'Go to references opened by trouble'}}
 
 wk.register({
  ['<c-g>'] = {'<cmd>lua ToggleQF(true)<cr>', 'Toggle quickfix list'},

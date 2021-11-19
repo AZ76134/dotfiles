@@ -1,4 +1,4 @@
------------------------------------------------------------
+
 -- Neovim settings
 -----------------------------------------------------------
 
@@ -74,7 +74,7 @@ opt.smartindent = true    -- autoindent new lines
 opt.inccommand = 'split'
 
 -- don't auto commenting new lines
-cmd [[au BufEnter * set fo-=c fo-=r fo-=o]]
+-- cmd [[au BufEnter * set fo-=c fo-=r fo-=o]]
 
 -- remove line lenght marker for selected filetypes
 cmd [[autocmd FileType text,markdown,html,xhtml,javascript setlocal cc=0]]
@@ -192,5 +192,3 @@ _G.ToggleQF = function(global)
   end
 end
 
--- lsp hover diagnostics
--- cmd [[ autocmd CursorHold * lua vim.lsp.util.show_line_diagnostics() ]]

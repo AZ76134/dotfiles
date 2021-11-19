@@ -56,8 +56,9 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 
-  require 'lsp_signature'.on_attach()
+  vim.api.nvim_command('autocmd CursorHold <buffer> lua vim.lsp.util.show_line_diagnostics()')
 
+  require 'lsp_signature'.on_attach()
 end
 
 --[[
@@ -109,6 +110,7 @@ for _, lsp in ipairs(servers) do
           -- Disable virtual_text
           virtual_text = false,
           signs = false,
+          update_in_insert = false,
         }
       ),
     },
