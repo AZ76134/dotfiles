@@ -20,7 +20,8 @@ require 'nvim-treesitter.configs'.setup {
     "html",
     "scss",
     "go",
-    "lua"
+    "lua",
+    "dockerfile",
   },
   textobjects = {
     move = {

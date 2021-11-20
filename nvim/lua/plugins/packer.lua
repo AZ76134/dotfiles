@@ -48,7 +48,7 @@ return packer.startup(function()
 
   -- icons
   use 'kyazdani42/nvim-web-devicons'
-  use 'ryanoasis/vim-devicons'
+  use { 'yamatsum/nvim-nonicons', requires = {'kyazdani42/nvim-web-devicons'}}
 
   -- colorscheme
   use {'ellisonleao/gruvbox.nvim', requires = {"rktjmp/lush.nvim"}}
@@ -81,7 +81,6 @@ return packer.startup(function()
   use 'numToStr/Comment.nvim'
   -- gitsign
   use { 'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'}}
-  use { 'yamatsum/nvim-nonicons', requires = {'kyazdani42/nvim-web-devicons'}}
   -- status line
   use {
     'glepnir/galaxyline.nvim',
