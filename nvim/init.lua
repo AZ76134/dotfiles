@@ -1,4 +1,5 @@
 require('impatient').enable_profile()
+require('plugins/devicons')
 require('global_config')
 require('plugins/packer')
 require('plugins/whichkey')
