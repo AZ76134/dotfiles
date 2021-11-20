@@ -87,12 +87,12 @@ wk.register({
     d = {'<cmd>Trouble lsp_document_diagnostics<cr>', 'Open trouble diagnostics for document'},
     l = {'<cmd>Trouble loclist<cr>', 'Open trouble location list'},
     q = {'<cmd>Trouble quickfix<cr>', 'Open trouble quickfix'},
-  },
-	['gR'] = {'<cmd>Trouble lsp_references<cr>', 'Go to references opened by trouble'},
+  }, ['gR'] = {'<cmd>Trouble lsp_references<cr>', 'Go to references opened by trouble'},
 	['<leader>l'] = {
 		name='+language server',
 		r = {'<cmd>LspRestart<cr>', 'Restart language server'},
-		d = {'<cmd>Telescope lsp_workspace_diagnostics<cr>', 'Workspace diagnostics'}
+		d = {'<cmd>Telescope lsp_workspace_diagnostics<cr>', 'Workspace diagnostics'},
+		s = {'<cmd>Telescope lsp_document_symbols<cr>', 'Document symbols'},
 	},
 })
 
@@ -129,4 +129,12 @@ wk.register({
  ['<space>J']= { '<cmd>lua require"dap".continue()<cr>', 'Debug continue'},
  ['<space>n']= { '<cmd>lua require"dap".down()<cr>', 'Debug go to next frame'},
  ['<space>p']= { '<cmd>lua require"dap".up()<cr>', 'Debug go to previous frame'},
+})
+
+wk.register({
+	['<leader>t'] = {
+		name='+tab',
+		v = {'<cmd>vsplit<cr>', 'Split tab vertically'},
+		n = {'<cmd>tabnew<cr>', 'Split tab vertically'},
+	},
 })
