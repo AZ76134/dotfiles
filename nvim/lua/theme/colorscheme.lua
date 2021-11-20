@@ -102,4 +102,5 @@ local self_color_solarized_dark = function()
 	]]
 end
 
-self_color_solarized_dark()
+-- self_color_solarized_dark()
+self_color_gruvbox_dark()
