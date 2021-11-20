@@ -33,7 +33,7 @@ opt.smartcase = true          -- ignore lowercase for the whole pattern
 opt.linebreak = true          -- wrap on word boundary
 
 -- remove whitespace on save
-cmd [[au BufWritePre * :%s/\s\+$//e]]
+-- cmd [[au BufWritePre * :%s/\s\+$//e]]
 
 
 -- highlight on yank
@@ -62,7 +62,7 @@ opt.termguicolors = true      -- enable 24-bit RGB colors
 -----------------------------------------------------------
 -- Tabs, indent
 -----------------------------------------------------------
-opt.expandtab = false      -- use spaces instead of tabs
+opt.expandtab = true     -- use spaces instead of tabs
 opt.shiftwidth = 4        -- shift 4 spaces when tab
 opt.tabstop = 4           -- 1 tab == 4 spaces
 opt.smartindent = true    -- autoindent new lines
@@ -78,6 +78,7 @@ opt.inccommand = 'split'
 
 -- remove line lenght marker for selected filetypes
 cmd [[autocmd FileType text,markdown,html,xhtml,javascript setlocal cc=0]]
+cmd [[autocmd FileType go setlocal noexpandtab]]
 
 -- 2 spaces for selected filetypes
 cmd [[
@@ -102,12 +103,11 @@ end
 -- Terminal visual tweaks
 --- enter insert mode when switching to terminal
 --- close terminal buffer on process exit
-
 -- cmd [[
 --     autocmd TermOpen * setlocal listchars= nonumber norelativenumber nocursorline
 --     autocmd TermOpen * startinsert
 --     autocmd BufLeave term://* stopinsert
--- ]]
+-- -- ]]
 cmd [[
     autocmd TermOpen * setlocal listchars= nonumber norelativenumber nocursorline
     autocmd BufLeave term://* stopinsert
