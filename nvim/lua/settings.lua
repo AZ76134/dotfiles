@@ -15,7 +15,7 @@ local opt = vim.opt         		-- global/buffer/windows-scoped options
 -----------------------------------------------------------
 -- General
 -----------------------------------------------------------
-opt.mouse = 'a'               -- enable mouse support
+opt.mouse = 'c'               -- enable mouse support
 opt.clipboard = 'unnamedplus' -- copy/paste to system clipboard
 opt.swapfile = false          -- don't use swapfile
 
@@ -31,6 +31,7 @@ opt.splitbelow = true         -- orizontal split to the bottom
 opt.ignorecase = true         -- ignore case letters when search
 opt.smartcase = true          -- ignore lowercase for the whole pattern
 opt.linebreak = true          -- wrap on word boundary
+opt.cursorline = true         -- show cursor line
 
 -- remove whitespace on save
 -- cmd [[au BufWritePre * :%s/\s\+$//e]]

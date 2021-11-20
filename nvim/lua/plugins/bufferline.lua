@@ -46,7 +46,7 @@ local signs=get_signs()
 
 bufferline.setup {
  options = {
-   numbers = 'ordinal',
+    numbers = 'ordinal',
     always_show_bufferline = true,
     diagnostics = 'nvim_lsp',
     diagnostics_indicator = function(count, level, diagnostics_dict, context)
