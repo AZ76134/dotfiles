@@ -55,10 +55,10 @@ local self_color_gruvbox_dark = function()
 end
 
 local self_color_solarized_dark = function()
-	vim.g.neosolarized_italic = 1
+	vim.g.solarized_italics = 1
 
 	cmd [[
-  au VimEnter * colorscheme NeoSolarized
+  au VimEnter * colorscheme solarized
 
   au VimEnter * highlight StatusLine                                                                                guifg=#073642
 

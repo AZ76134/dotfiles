@@ -51,7 +51,8 @@ return packer.startup(function()
   use 'ryanoasis/vim-devicons'
 
   -- colorscheme
-  use {"ellisonleao/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
+  use {'ellisonleao/gruvbox.nvim', requires = {"rktjmp/lush.nvim"}}
+  use {'ishan9299/nvim-solarized-lua'}
   -- treesitter
   use 'nvim-treesitter/nvim-treesitter'
   use 'p00f/nvim-ts-rainbow'

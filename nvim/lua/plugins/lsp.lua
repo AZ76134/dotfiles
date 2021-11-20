@@ -109,7 +109,7 @@ for _, lsp in ipairs(servers) do
         vim.lsp.diagnostic.on_publish_diagnostics, {
           -- Disable virtual_text
           virtual_text = false,
-          signs = false,
+          signs = true,
           update_in_insert = false,
         }
       ),
