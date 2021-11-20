@@ -16,6 +16,11 @@ telescope.setup{
         ["<C-t>"] = trouble.open_with_trouble
       },
     },
+    file_ignore_patterns = {
+      'node_modules',
+      '.git',
+      '.old',
+    },
   },
   extensions = {
     -- fzf = {
