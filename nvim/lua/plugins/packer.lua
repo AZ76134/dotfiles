@@ -124,6 +124,12 @@ return packer.startup(function()
 	use 'kazhala/close-buffers.nvim'
 	-- window stabilize
 	use 'luukvbaal/stabilize.nvim'
-
+-- mkdir
+	use {
+		'jghauser/mkdir.nvim',
+		config = function()
+			require('mkdir')
+		end
+	}
 end)
 
