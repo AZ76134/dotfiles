@@ -66,13 +66,17 @@ wk.register({
   -- ['<leader>bc'] = {'<cmd>bd!<cr>', 'Delete current buffer'},
   -- ['<leader>bq'] = {'<cmd>%bd|e#|bd#<cr>', 'Delete all but current buffer'},
   ['<leader>bc'] = {
-		'<cmd>lua require("close_buffers").delete({type = "this"})<cr>',
-		'Delete current buffer',
-	},
+    '<cmd>lua require("close_buffers").delete({type = "this"})<cr>',
+    'Delete current buffer',
+  },
+  ['<leader>bk'] = {
+    '<cmd>lua require("close_buffers").delete({type = "this", force = true})<cr>',
+    'Force delete current buffer',
+  },
   ['<leader>bq'] = {
-		'<cmd>lua require("close_buffers").delete({type = "other"})<cr>',
-		'Delete all but current buffer',
-	},
+    '<cmd>lua require("close_buffers").delete({type = "other"})<cr>',
+    'Delete all but current buffer',
+  },
 })
 
 -- toggleterm
@@ -88,12 +92,12 @@ wk.register({
     l = {'<cmd>Trouble loclist<cr>', 'Open trouble location list'},
     q = {'<cmd>Trouble quickfix<cr>', 'Open trouble quickfix'},
   }, ['gR'] = {'<cmd>Trouble lsp_references<cr>', 'Go to references opened by trouble'},
-	['<leader>l'] = {
-		name='+language server',
-		r = {'<cmd>LspRestart<cr>', 'Restart language server'},
-		d = {'<cmd>Telescope lsp_workspace_diagnostics<cr>', 'Workspace diagnostics'},
-		s = {'<cmd>Telescope lsp_document_symbols<cr>', 'Document symbols'},
-	},
+  ['<leader>l'] = {
+    name='+language server',
+    r = {'<cmd>LspRestart<cr>', 'Restart language server'},
+    d = {'<cmd>Telescope lsp_workspace_diagnostics<cr>', 'Workspace diagnostics'},
+    s = {'<cmd>Telescope lsp_document_symbols<cr>', 'Document symbols'},
+  },
 })
 
 wk.register({
@@ -132,9 +136,20 @@ wk.register({
 })
 
 wk.register({
-	['<leader>t'] = {
-		name='+tab',
-		v = {'<cmd>vsplit<cr>', 'Split tab vertically'},
-		n = {'<cmd>tabnew<cr>', 'Split tab vertically'},
-	},
+  ['<leader>t'] = {
+    name='+tab',
+    v = {'<cmd>vsplit<cr>', 'Split tab vertically'},
+    n = {'<cmd>tabnew<cr>', 'Add new tab'},
+  },
+})
+
+wk.register({
+  ['<leader>h'] = {
+    name='+hunk',
+    s = {'<cmd>lua require"gitsigns".stage_hunk()<cr>', 'Stage hun'},
+    u = {'<cmd>lua require"gitsigns".undo_stage_hunk()<cr>', 'Undo stage hunk'},
+    r = {'<cmd>lua require"gitsigns".reset_hunk()<cr>', 'Reset hunk'},
+    p = {'<cmd>lua require"gitsigns".preview_hunk()<cr>', 'Preview hunk'},
+    b = {'<cmd>lua require"gitsigns".blame_line{full=true}<cr>', 'Preview all blame line'},
+  },
 })
