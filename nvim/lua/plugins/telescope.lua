@@ -22,6 +22,23 @@ telescope.setup{
       '.old',
     },
   },
+  pickers = {
+    find_files = {
+      theme = 'dropdown',
+    },
+    git_files = {
+      theme = 'dropdown',
+    },
+    oldfiles = {
+      theme = 'dropdown',
+    },
+    current_buffer_fuzzy_find = {
+      theme = 'dropdown',
+    },
+    buffers = {
+      theme = 'dropdown',
+    },
+  },
   extensions = {
     -- fzf = {
     --   fuzzy = true,                    -- false will only do exact matching
