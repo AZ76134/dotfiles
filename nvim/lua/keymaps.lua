@@ -79,8 +79,13 @@ wk.register({
   },
 })
 
--- toggleterm
-wk.register{ ['<leader>g'] = {'<cmd>lua lazygit_toggle()<cr>', 'Toggle lazy git'}}
+-- toggleterm util
+wk.register({
+  ['<leader>u'] = {
+   name='+util',
+   g = {'<cmd>lua lazygit_toggle()<cr>', 'Toggle lazy git'},
+  },
+})
 
 -- lsp related
 wk.register({
