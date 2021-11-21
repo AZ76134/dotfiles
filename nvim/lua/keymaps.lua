@@ -43,7 +43,9 @@ wk.register({
     c = {'<cmd>Telescope current_buffer_fuzzy_find<cr>', 'Find in current buffer'},
     r = {'<cmd>Telescope live_grep<cr>', 'Find grep'},
     b = {'<cmd>Telescope buffers<cr>', 'Find buffer'},
-    s = {'<cmd>Telescope session-lens search_session<cr>', 'Find session'},
+    -- s = {'<cmd>Telescope session-lens search_session<cr>', 'Find session'},
+    -- s = {'<cmd>Telescope sessions<cr>', 'Find session'},
+    s = {'<cmd>lua require"telescope".extensions.sessions.sessions{}<cr>', 'Find session'},
     m = {'<cmd>Telescope marks<cr>', 'Find marks'},
     p = {'<cmd>lua require"telescope".extensions.repo.list{}<cr>', 'Find repo'},
     ['?'] = {'<cmd>Cheatsheet<cr>', 'Open cheat sheet'}
@@ -79,11 +81,12 @@ wk.register({
   },
 })
 
--- toggleterm util
+--  util
 wk.register({
   ['<leader>u'] = {
    name='+util',
    g = {'<cmd>lua lazygit_toggle()<cr>', 'Toggle lazy git'},
+   u = {'<cmd>UndotreeToggle<cr>', 'Toggle undo tree'},
   },
 })
 

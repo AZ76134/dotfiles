@@ -100,11 +100,8 @@ return packer.startup(function()
   -- bufferline
   use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
   -- session management
-  use 'rmagatti/auto-session'
-  use {
-    'rmagatti/session-lens',
-    requires = {'rmagatti/auto-session', 'nvim-telescope/telescope.nvim'},
-  }
+  use 'Shatur/neovim-session-manager'
+  
   -- tabout
   use 'abecodes/tabout.nvim'
 
