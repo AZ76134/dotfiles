@@ -38,6 +38,12 @@ telescope.setup{
     buffers = {
       theme = 'dropdown',
     },
+    lsp_workspace_diagnostics = {
+      theme = 'dropdown',
+    },
+    lsp_document_symbols = {
+      theme = 'dropdown',
+    },
   },
   extensions = {
     -- fzf = {
@@ -60,3 +66,4 @@ telescope.load_extension('fzy_native')
 local ok, cheatsheet = pcall(require, 'cheatsheet')
 if (not ok) then return end
 cheatsheet.setup{}
+
