@@ -160,7 +160,7 @@ wk.register({
 
 wk.register({
   ['<leader>h'] = {
-    name='+hunk'
+    name='+hunk',
     s = {'<cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>', 'Stage hunk'},
     r = {'<cmd>lua require"gitsigns".reset_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>', 'Reset hunk'},
   },
