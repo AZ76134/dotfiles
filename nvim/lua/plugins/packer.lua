@@ -36,6 +36,9 @@ return packer.startup(function()
 
   -- LSP
   use 'neovim/nvim-lspconfig'
+  use 'williamboman/nvim-lsp-installer'
+  use 'mfussenegger/nvim-lint'
+  
   use 'onsails/lspkind-nvim'
   use 'ray-x/lsp_signature.nvim'
   use {'folke/trouble.nvim', requires = {'kyazdani42/nvim-web-devicons'}}

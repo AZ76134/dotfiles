@@ -4,6 +4,27 @@
 
 -- Plugin: nvim-lspconfig
 -- for language server setup see: https://github.com/neovim/nvim-lspconfig
+-- 
+local cmd = vim.cmd
+local ok, lsp_installer = pcall(require, 'nvim-lsp-installer.servers')
+if (not ok) then return end
+local servers = {
+  'bashls',
+  'gopls',
+  'dockerls',
+  'rust_analyzer',
+}
+
+for _, server in ipairs(servers) do
+  local o, language_server = lsp_installer.get_server(server)
+
+  if ok then
+    if not language_server:is_installed() then
+      language_server:install()
+    end
+  end
+end
+
 local ok, nvim_lsp = pcall(require, 'lspconfig')
 if (not ok) then return end
 
@@ -69,7 +90,14 @@ https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.m
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'gopls', 'bashls', 'html', 'tsserver' }
+local servers = { 
+  'gopls', 
+  'bashls',
+  'html',
+  'tsserver',
+  'rust_analyzer',
+  'dockerls',
+}
 
 -- Set settings for language servers below
 --
@@ -151,3 +179,12 @@ trouble.setup{
     -- },
     use_lsp_diagnostic_signs = true -- enabling this will use the signs defined in your lsp client
 }
+
+local ok, lint = pcall(require, 'lint')
+if (not ok) then return end
+lint.linters_by_ft = {
+  go = {'golangcilint'},
+}
+cmd [[
+au BufWritePost <buffer> lua require('lint').try_lint()
+]]
