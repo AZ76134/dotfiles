@@ -7,6 +7,7 @@ local trouble = require('trouble.providers.telescope')
 
 telescope.setup{
   defaults = {
+    path_display = {'truncate'},
     mappings = {
       n = {
         ["q"] = actions.close,
