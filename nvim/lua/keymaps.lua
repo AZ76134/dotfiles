@@ -43,8 +43,6 @@ wk.register({
     c = {'<cmd>Telescope current_buffer_fuzzy_find<cr>', 'Find in current buffer'},
     r = {'<cmd>Telescope live_grep<cr>', 'Find grep'},
     b = {'<cmd>Telescope buffers<cr>', 'Find buffer'},
-    -- s = {'<cmd>Telescope session-lens search_session<cr>', 'Find session'},
-    -- s = {'<cmd>Telescope sessions<cr>', 'Find session'},
     s = {'<cmd>lua require"telescope".extensions.sessions.sessions{}<cr>', 'Find session'},
     m = {'<cmd>Telescope marks<cr>', 'Find marks'},
     p = {'<cmd>lua require"telescope".extensions.repo.list{}<cr>', 'Find repo'},
@@ -65,8 +63,6 @@ wk.register({
   ['<leader>7'] = {'<cmd>BufferLineGoToBuffer 7<cr>', 'Go to buffer 7'},
   ['<leader>8'] = {'<cmd>BufferLineGoToBuffer 8<cr>', 'Go to buffer 8'},
   ['<leader>9'] = {'<cmd>BufferLineGoToBuffer 9<cr>', 'Go to buffer 9'},
-  -- ['<leader>bc'] = {'<cmd>bd!<cr>', 'Delete current buffer'},
-  -- ['<leader>bq'] = {'<cmd>%bd|e#|bd#<cr>', 'Delete all but current buffer'},
   ['<leader>bc'] = {
     '<cmd>lua require("close_buffers").delete({type = "this"})<cr>',
     'Delete current buffer',
@@ -154,10 +150,51 @@ wk.register({
 wk.register({
   ['<leader>h'] = {
     name='+hunk',
-    s = {'<cmd>lua require"gitsigns".stage_hunk()<cr>', 'Stage hun'},
+    s = {'<cmd>lua require"gitsigns".stage_hunk()<cr>', 'Stage hunk'},
     u = {'<cmd>lua require"gitsigns".undo_stage_hunk()<cr>', 'Undo stage hunk'},
     r = {'<cmd>lua require"gitsigns".reset_hunk()<cr>', 'Reset hunk'},
     p = {'<cmd>lua require"gitsigns".preview_hunk()<cr>', 'Preview hunk'},
     b = {'<cmd>lua require"gitsigns".blame_line{full=true}<cr>', 'Preview all blame line'},
   },
 })
+
+wk.register({
+  ['<leader>h'] = {
+    name='+hunk'
+    s = {'<cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>', 'Stage hunk'},
+    r = {'<cmd>lua require"gitsigns".reset_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>', 'Reset hunk'},
+  },
+}, visual)
+
+local M = {}
+M.on_lsp_attach = function(client, bufnr)
+  local bufOpt = {
+    mode = "n", -- NORMAL mode
+    prefix = "",
+    buffer = bufnr, -- Global mappings. Specify a buffer number for buffer local mappings
+    silent = true, -- use `silent` when creating keymaps
+    noremap = true, -- use `noremap` when creating keymaps
+    nowait = false, -- use `nowait` when creating keymaps
+  }
+  
+  wk.register({
+    ['gD'] = {'<cmd>lua vim.lsp.buf.declaration()<CR>', 'Go to declaration'},
+    ['gd'] = {'<cmd>lua vim.lsp.buf.definition()<CR>', 'Go to definition'},
+    ['K'] = {'<cmd>lua vim.lsp.buf.hover()<CR>', 'Hover'},
+    ['gi'] = {'<cmd>lua vim.lsp.buf.implementation()<CR>', 'Go to implementation'},
+    ['<C-k>'] = {'<cmd>lua vim.lsp.buf.signature_help()<CR>', 'Open signature help'},
+    ['<space>wa'] = {'<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', 'Add workspace folder'},
+    ['<space>wr'] = {'<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', 'Remove workspace folder'},
+    ['<space>wl'] = {'<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', 'List workspace folders'},
+    ['<space>D'] = {'<cmd>lua vim.lsp.buf.type_definition()<CR>', 'Open type definition'},
+    ['<space>rn'] = {'<cmd>lua vim.lsp.buf.rename()<CR>', 'Rename symbol'},
+    ['<space>ca'] = {'<cmd>lua vim.lsp.buf.code_action()<CR>', 'Open code action'},
+    ['gr'] = {'<cmd>lua vim.lsp.buf.references()<CR>', 'Open references'},
+    ['<space>e'] = {'<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', 'Show line diagnostics'},
+    ['[d'] = {'<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', 'Previous diagnostic'},
+    [']d'] = {'<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', 'Next diagnostic'},
+    ['<space>q'] = {'<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', 'Set location list'},
+    ['<space>f'] = {'<cmd>lua vim.lsp.buf.formatting()<CR>', 'Format buffer'},
+  }, bufOpt)
+end
+return M
