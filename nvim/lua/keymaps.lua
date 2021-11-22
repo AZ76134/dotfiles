@@ -144,8 +144,8 @@ wk.register({
 })
 
 wk.register({
-  ['<leader>t'] = {
-    name='+tab',
+  ['<leader>w'] = {
+    name='+window',
     v = {'<cmd>vsplit<cr>', 'Split tab vertically'},
     n = {'<cmd>tabnew<cr>', 'Add new tab'},
   },
