@@ -20,7 +20,8 @@ local visual = {
 
 wk.register{ ['<leader>h'] = {':set hlsearch!<cr>', 'Toggle hightlight search'}}
 
-wk.register{ ['<leader>e'] = {'<cmd>CHADopen<cr>', 'Toggle file explorer'}}
+-- wk.register{ ['<leader>e'] = {'<cmd>CHADopen<cr>', 'Toggle file explorer'}}
+wk.register{ ['<leader>e'] = {'<cmd>NvimTreeToggle<cr>', 'Toggle file explorer'}}
 
 wk.register({
   ['<C-h>'] = {'<C-w>h', 'Switch to left window' },
