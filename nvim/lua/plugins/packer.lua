@@ -47,6 +47,7 @@ return packer.startup(function()
   use 'onsails/lspkind-nvim'
   use 'ray-x/lsp_signature.nvim'
   use {'folke/trouble.nvim', requires = {'kyazdani42/nvim-web-devicons'}}
+  use 'onsails/diaglist.nvim'
 
   -- indent line
   use 'lukas-reineke/indent-blankline.nvim'

@@ -32,6 +32,7 @@ opt.ignorecase = true         -- ignore case letters when search
 opt.smartcase = true          -- ignore lowercase for the whole pattern
 opt.linebreak = true          -- wrap on word boundary
 opt.cursorline = true         -- show cursor line
+opt.signcolumn = 'yes:2'      -- always show sign column
 
 -- remove whitespace on save
 -- cmd [[au BufWritePre * :%s/\s\+$//e]]
@@ -150,13 +151,13 @@ opt.shortmess:append "sI"
 local is_open_qf_l = false
 local is_open_qf_g = false
 
-cmd [[
-augroup fixlist
-    autocmd!
-    autocmd BufWinEnter quickfix lua set_qf_is_open()
-    autocmd BufWinLeave * lua set_qf_is_close()
-augroup END
-]]
+-- cmd [[
+-- augroup fixlist
+--     autocmd!
+--     autocmd BufWinEnter quickfix lua set_qf_is_open()
+--     autocmd BufWinLeave * lua set_qf_is_close()
+-- augroup END
+-- ]]
 
 -- TODO: make this local
 _G.set_qf_is_open = function()
@@ -177,18 +178,38 @@ _G.set_qf_is_close = function()
   end
 end
 
+-- _G.ToggleQF = function(global)
+--   if global then
+--     if is_open_qf_g then
+--       cmd [[cclose]]
+--     else
+--       cmd [[copen]]
+--     end
+--   else
+--     if is_open_qf_l then
+--       cmd [[lclose]]
+--     else
+--       cmd [[lopen]]
+--     end
+--   end
+-- end
+
 _G.ToggleQF = function(global)
   if global then
     if is_open_qf_g then
       cmd [[cclose]]
+      is_open_qf_g = false
     else
       cmd [[copen]]
+      is_open_qf_g = true
     end
   else
     if is_open_qf_l then
       cmd [[lclose]]
+      is_open_qf_l = false
     else
-      cmd [[lclose]]
+      cmd [[lopen]]
+      is_open_qf_l = true
     end
   end
 end

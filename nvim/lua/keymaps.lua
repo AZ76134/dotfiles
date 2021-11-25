@@ -20,8 +20,8 @@ local visual = {
 
 wk.register{ ['<leader>h'] = {':set hlsearch!<cr>', 'Toggle hightlight search'}}
 
--- wk.register{ ['<leader>e'] = {'<cmd>CHADopen<cr>', 'Toggle file explorer'}}
-wk.register{ ['<leader>e'] = {'<cmd>NvimTreeToggle<cr>', 'Toggle file explorer'}}
+wk.register{ ['<leader>e'] = {'<cmd>CHADopen<cr>', 'Toggle file explorer'}}
+-- wk.register{ ['<leader>e'] = {'<cmd>NvimTreeToggle<cr>', 'Toggle file explorer'}}
 
 wk.register({
   ['<C-h>'] = {'<C-w>h', 'Switch to left window' },
@@ -81,9 +81,11 @@ wk.register({
 --  util
 wk.register({
   ['<leader>u'] = {
-   name='+util',
-   g = {'<cmd>lua lazygit_toggle()<cr>', 'Toggle lazy git'},
-   u = {'<cmd>UndotreeToggle<cr>', 'Toggle undo tree'},
+    name='+util',
+    g = {'<cmd>lua lazygit_toggle()<cr>', 'Toggle lazy git'},
+    u = {'<cmd>UndotreeToggle<cr>', 'Toggle undo tree'},
+    q = {'<cmd>lua ToggleQF(true)<cr>', 'Toggle quickfix list'},
+    l = {'<cmd>lua ToggleQF(false)<cr>', 'Toggle location list'},
   },
 })
 
@@ -105,9 +107,12 @@ wk.register({
   },
 })
 
-wk.register({
- ['<c-g>'] = {'<cmd>lua ToggleQF(true)<cr>', 'Toggle quickfix list'},
-})
+-- wk.register({
+--  ['<c-g>'] = {'<cmd>lua ToggleQF(true)<cr>', 'Toggle quickfix list'},
+--  ['<c-d>'] = {'<cmd>lua ToggleQF(true)<cr>', 'Toggle location list'},
+--  -- ['<c-g>'] = {'<cmd>lua require("diaglist").open_all_diagnostics()<cr>', 'Toggle quickfix list'},
+--  -- ['<c-d>'] = {'<cmd>lua require("diaglist").open_buffer_diagnostics()<cr>', 'Toggle location list'},
+-- })
 
 wk.register({
   ['<leader>t'] = {
